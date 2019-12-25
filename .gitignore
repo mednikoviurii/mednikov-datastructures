@@ -4,5 +4,4 @@
 bin/
 build/
 .vscode/
-gradle/
 .project
