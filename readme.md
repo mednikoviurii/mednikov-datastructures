@@ -6,6 +6,7 @@ This repository contains code snippets for "Java vs. Vavr data structures" serie
 * [Queues](https://www.mednikov.net/queues-in-java-and-vavr/)
 * [Sets](https://www.mednikov.net/sets-in-java-and-vavr/)
 * [Maps](https://www.mednikov.net/maps-java-vs-vavr/)
+* Lists
 
 For more information, please refer to mentioned posts.
 
@@ -15,6 +16,8 @@ For more information, please refer to mentioned posts.
 
 ## Author
 
-Iurii Mednikov (Yuri Mednikov), Prague, Czech Republic
-contact me: yuri.mednikov@mednikov.net
+__Iurii Mednikov (Yuri Mednikov)__, Prague, Czech Republic
+
+email: yuri.mednikov@mednikov.net
+
 twitter: https://www.twitter.com/andreevi_ch
