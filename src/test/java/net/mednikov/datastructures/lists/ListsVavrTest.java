@@ -2,6 +2,7 @@ package net.mednikov.datastructures.lists;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -40,5 +41,29 @@ public class ListsVavrTest {
         List<String> names = List.of("Adriana", "Darina", "Maria", "Karla", "Zuzana", "Yeliz");
         List<String> results = names.replace("Darina", "Denisa");
         assertFalse(results.contains("Darina"));
+    }
+
+    @Test
+    public void searchForElementTest(){
+        List<String> names = List.of("Adriana", "Darina", "Maria", "Karla", "Zuzana", "Yeliz");
+        int position = names.indexOf("Maria");
+        assertEquals(2, position);
+    }
+
+    @Test
+    public void createSublistTest(){
+        List<Integer> original = List.of(54, 12, 29, 13, 95, 65, 285, 90, 5431);
+        List<Integer> sublist = original.slice(0, 5); // end index not inlcuded
+        assertFalse(sublist.contains(65));
+        assertTrue(sublist.contains(12));
+    }
+
+    @Test
+    public void compareListsTest(){
+        List<Integer> numbers1 = List.of(12, 33, 65, 19, 72, 14, 2, 99, 40, 30, 27);
+        List<Integer> numbers2 = List.of(12, 33, 65, 19, 72, 14, 2, 99, 40, 30, 27);
+
+        boolean areEqual = numbers1.equals(numbers2);
+        assertTrue(areEqual);
     }
 }

@@ -2,6 +2,7 @@ package net.mednikov.datastructures.lists;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,5 +89,46 @@ public class ListsJavaTest {
         assertEquals("Daniela", names.get(2));
         Collections.replaceAll(names, "Daniela", "Darina");
         assertEquals("Darina", names.get(2));
+    }
+
+    @Test
+    public void searchForElementTest(){
+        List<Integer> numbers = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);
+        int positionOf45 = numbers.indexOf(45);
+        assertEquals(4, positionOf45);
+
+        // using lastIndexOf
+        List<Integer> numbers2 = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 45, 6, 13);
+        // we have 2x 45
+
+        int positionLast = numbers2.lastIndexOf(45);
+        assertEquals(8, positionLast);
+    }
+
+    @Test
+    public void createSublistTest(){
+        List<String> original = Arrays.asList("Agata", "Emma", "Daniela", "Katarina", "Zsuzsi");
+        List<String> sublist = original.subList(0, 4);
+        assertTrue(sublist.contains("Katarina"));
+        assertFalse(sublist.contains("Zsuzsi"));
+    }
+
+    @Test
+    public void compareListsTest(){
+        List<Integer> list1 = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);
+        List<Integer> list2 = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);
+
+        // Approach 1. with equals
+        boolean areEqual = list1.equals(list2);
+        assertTrue(areEqual);
+
+        // Approach 2. with streams
+        List<Integer> list3 = Arrays.asList(1, 12, 52, 39, 45, 100, 98, 6, 13, 565);
+        // list3 has same selements in the different order
+        boolean areEqual2 = list1.equals(list3);
+        assertFalse(areEqual2);
+
+        boolean allMatch = list3.stream().allMatch(number -> list1.contains(number));
+        assertTrue(allMatch);
     }
 }
