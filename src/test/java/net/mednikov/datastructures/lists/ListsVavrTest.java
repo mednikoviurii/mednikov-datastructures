@@ -25,8 +25,12 @@ public class ListsVavrTest {
     @Test
     public void removeElementFromListTest(){
         List<String> names = List.of("Adriana", "Darina", "Maria", "Karla", "Zuzana", "Yeliz");
+
         List<String> results = names.remove("Darina");
         assertEquals(names.size() - 1, results.size());
+
+        List<String> results2 = names.removeAt(3);
+        assertFalse(results2.contains("Karla"));
     }
 
     @Test
