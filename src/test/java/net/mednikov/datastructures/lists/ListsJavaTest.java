@@ -131,4 +131,16 @@ public class ListsJavaTest {
         boolean allMatch = list3.stream().allMatch(number -> list1.contains(number));
         assertTrue(allMatch);
     }
+
+    @Test
+    public void removeOverloadedTest(){
+        List<Integer> numbers =  new ArrayList<>();
+        numbers.add(12);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(51);
+        System.out.println(numbers);
+        numbers.remove(Integer.valueOf(2));
+        System.out.println(numbers);
+    }
 }
