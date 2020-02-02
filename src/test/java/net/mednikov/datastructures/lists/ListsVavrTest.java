@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import io.vavr.collection.List;
+import io.vavr.control.Option;
 
 public class ListsVavrTest {
 
@@ -51,7 +52,9 @@ public class ListsVavrTest {
     public void searchForElementTest(){
         List<String> names = List.of("Adriana", "Darina", "Maria", "Karla", "Zuzana", "Yeliz");
         int position = names.indexOf("Maria");
+        Option<Integer> positionOption = names.indexOfOption("Karla");
         assertEquals(2, position);
+        assertTrue(positionOption.isDefined());
     }
 
     @Test
