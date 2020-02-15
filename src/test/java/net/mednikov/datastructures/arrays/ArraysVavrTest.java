@@ -11,23 +11,23 @@ public class ArraysVavrTest {
 
     @Test
     public void addElementsToArrayTest() {
-        Array<String> names = Array.of("Anna", "Barbora", "Carolina", "Denisa", "Eva");
-        Array<String> updatedNames = names.append("Hana");
+        Array<String> names = Array.of("Alejandra", "Beatriz", "Carmen", "Dolores");
+        Array<String> updatedNames = names.append("Isabel");
         assertFalse(names.equals(updatedNames));
     }
 
     @Test
     public void accessElementInArrayTest(){
-        Array<String> names = Array.of("Anna", "Barbora", "Carolina", "Denisa", "Eva");
+        Array<String> names = Array.of("Alejandra", "Beatriz", "Carmen", "Dolores");
         String name = names.get(2);
-        assertEquals("Carolina", name);
+        assertEquals("Carmen", name);
     }
 
     @Test
     public void filterArrayTest() {
-        Array<String> names = Array.of("Aneta", "Barbora", "Agata", "Denisa", "Anna");
+        Array<String> names = Array.of("Alejandra", "Beatriz", "Aneta", "Carmen", "Ana", "Gabriela", "Alisa");
         Array<String> filtered = names.filter(name -> name.startsWith("A"));
-        assertEquals(3, filtered.length());
+        assertEquals(4, filtered.length());
     }
 
     @Test

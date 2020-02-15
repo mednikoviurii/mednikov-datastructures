@@ -12,10 +12,10 @@ public class ArraysJavaTest{
     @Test
     public void addElementToArrayTest(){
         // declare array
-        String[] names = {"Anna", "Beata", "Carolina", "Denisa"};
+        String[] names = {"Alejandra", "Beatriz", "Carmen", "Dolores"};
 
         // add element
-        String name = "Zuzka";
+        String name = "Elena";
 
         // step 1. get old array length
         int oldLength = names.length;
@@ -47,9 +47,9 @@ public class ArraysJavaTest{
 
     @Test 
     public void filterArrayTest(){
-      String[] cities = {"Madrid", "Moscow", "Prague", "Montreal", "Macao", "Berlin", "Vienna"};
-      assertEquals(7, cities.length);
-      long res = Arrays.stream(cities).filter(city->city.startsWith("M")).count();
+      String[] names = {"Alejandra", "Beatriz", "Aneta", "Carmen", "Ana", "Gabriela", "Alisa"};
+      assertEquals(7, names.length);
+      long res = Arrays.stream(names).filter(name->name.startsWith("A")).count();
       assertEquals(4, res);
     }
 

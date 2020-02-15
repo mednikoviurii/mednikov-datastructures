@@ -16,20 +16,19 @@ public class MapsJavaTest{
     @Test
     public void addToMapTest(){
         HashMap<Integer, Person> people = new HashMap<>();
-        people.put(1, new Person("Jana", "Novakova"));
-        people.put(2, new Person("Zuzana", "Dvorakova"));
-        people.put(3, new Person("Tereza", "Prokopova"));
-        people.put(4, new Person("Stela", "Husova"));
-        people.put(3, new Person("Pavla", "Shvecova"));
-        assertEquals(new Person("Pavla", "Shvecova"), people.get(3));
+        people.put(1, new Person("Alejandra", "Gutierrez"));
+        people.put(2, new Person("Beatriz", "Gomez"));
+        people.put(3, new Person("Carmen", "Hidalgo"));
+        people.put(4, new Person("Dolores", "Sanchez"));
+        assertEquals(new Person("Carmen", "Hidalgo"), people.get(3));
     }
 
     @Test
     public void removeFromMapTest(){
         HashMap<Integer, Person> people = new HashMap<>();
-        people.put(1, new Person("Jana", "Novakova"));
-        people.put(2, new Person("Zuzana", "Dvorakova"));
-        people.put(3, new Person("Tereza", "Prokopova"));
+        people.put(1, new Person("Alejandra", "Gutierrez"));
+        people.put(2, new Person("Beatriz", "Gomez"));
+        people.put(3, new Person("Carmen", "Hidalgo"));
         assertEquals(3, people.size());
         people.remove(3);
         assertEquals(2, people.size());

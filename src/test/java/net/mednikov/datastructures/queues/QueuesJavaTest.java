@@ -18,24 +18,24 @@ public class QueuesJavaTest {
 
         // people are inserted in the tail, so head is same
 
-        people.offer(new Person("Zuzana", "Cermakova"));
-        people.offer(new Person("Tereza", "Vodickova"));
-        people.offer(new Person("Carolina", "Prokopova"));
+        people.offer(new Person("Alejandra", "Morales"));
+        people.offer(new Person("Beatriz", "Sanchez"));
+        people.offer(new Person("Carmen", "Hidalgo"));
         
         Person head = people.peek();
 
-        // head of queue is Zuzana Cermakova
+        // head of queue is Alejandra Morales
 
-        assertEquals("Zuzana", head.getFirstName());
-        assertEquals("Cermakova", head.getLastName());
+        assertEquals("Alejandra", head.getFirstName());
+        assertEquals("Morales", head.getLastName());
     }
 
     @Test
     public void getTailTest(){
         Queue<Person> people = new ArrayDeque<>();
-        people.offer(new Person("Zuzana", "Cermakova"));
-        people.offer(new Person("Tereza", "Vodickova"));
-        people.offer(new Person("Carolina", "Prokopova"));
+        people.offer(new Person("Alejandra", "Morales"));
+        people.offer(new Person("Beatriz", "Sanchez"));
+        people.offer(new Person("Carmen", "Hidalgo"));
 
         // step 1 Copy existing queue
         Queue<Person> tail = new ArrayDeque<>(people);
@@ -44,7 +44,7 @@ public class QueuesJavaTest {
         tail.poll();
 
         assertEquals(2, tail.size());
-        assertEquals("Tereza", tail.peek().getFirstName());
+        assertEquals("Beatriz", tail.peek().getFirstName());
     }
 
     @Test

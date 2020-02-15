@@ -13,12 +13,12 @@ public class QueuesVavrTest{
     @Test
     public void enqueueTest(){
         Queue<Person> people = Queue.of(
-            new Person("Aneta", "Fialova"), 
-            new Person("Jana", "Dvorakova"), 
-            new Person("Patricia", "Shvecova"));
+            new Person("Alejandra", "Velasquez"), 
+            new Person("Beatriz", "Hidalgo"), 
+            new Person("Carmen", "Sanchez"));
         
         // vavr queues are immutable
-        Queue<Person> result = people.enqueue(new Person("Marketa", "Dietrichova"));
+        Queue<Person> result = people.enqueue(new Person("Juanita", "Iglesias"));
         assertEquals(3, people.size());
         assertEquals(4, result.size());
 
@@ -31,9 +31,9 @@ public class QueuesVavrTest{
     @Test
     public void getTailTest(){
         Queue<Person> people = Queue.of(
-            new Person("Aneta", "Fialova"), 
-            new Person("Jana", "Dvorakova"), 
-            new Person("Patricia", "Shvecova"));
+            new Person("Alejandra", "Velasquez"), 
+            new Person("Beatriz", "Hidalgo"), 
+            new Person("Carmen", "Sanchez"));
         Queue<Person> tail = people.tail();
         assertEquals(2, tail.size());
     }
@@ -41,17 +41,17 @@ public class QueuesVavrTest{
     @Test
     public void dequeueTest(){
         Queue<Person> people = Queue.of(
-            new Person("Aneta", "Fialova"), 
-            new Person("Jana", "Dvorakova"), 
-            new Person("Patricia", "Shvecova"));
+            new Person("Alejandra", "Velasquez"), 
+            new Person("Beatriz", "Hidalgo"), 
+            new Person("Carmen", "Sanchez"));
 
         Tuple2<Person, Queue<Person>> result = people.dequeue();
         // first is head
         Person head = result._1();
         Queue<Person> remainingPeople = result._2();
-        assertEquals("Aneta", head.getFirstName());
+        assertEquals("Alejandra", head.getFirstName());
         assertEquals(2, remainingPeople.size());
-        assertEquals("Jana", remainingPeople.head().getFirstName());
+        assertEquals("Beatriz", remainingPeople.head().getFirstName());
 
     }
 }

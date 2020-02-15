@@ -53,10 +53,10 @@ public class SetsJavaTest {
         //use custom objects
         // people are ordered by the first name
         TreeSet<Person> people = new TreeSet<>();
-        people.add(new Person("Jana", "Cermakova"));
-        people.add(new Person("Tereza", "Vodickova"));
-        people.add(new Person("Zuzana", "Novakova"));
-        people.add(new Person("Jana", "Vojtechova"));
+        people.add(new Person("Alejandra", "Morales"));
+        people.add(new Person("Katarina", "Rodriguez"));
+        people.add(new Person("Maria", "Sanchez"));
+        people.add(new Person("Robetra", "Iglesias"));
 
         people.stream().forEach(System.out::println);
     }

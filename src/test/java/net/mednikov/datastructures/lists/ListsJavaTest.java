@@ -26,31 +26,31 @@ public class ListsJavaTest {
         assertEquals(5, numbers.size());
 
         //Approach 2. Use Arrays.asList. IMMUTABLE!
-        List<String> names = Arrays.asList("Agata", "Emma", "Daniela", "Katarina", "Zsuzsi");
+        List<String> names = Arrays.asList("Alejandra", "Beatriz", "Carmen", "Dolores", "Juanita");
         assertEquals(5, names.size());
     }
 
     @Test
     public void removeElementFromListTest() {
         List<String> names = new ArrayList<>();
-        names.add("Agata");
-        names.add("Emma");
-        names.add("Daniela");
-        names.add("Katarina");
-        names.add("Zsuzsi");
+        names.add("Alejandra");
+        names.add("Beatriz");
+        names.add("Carmen");
+        names.add("Dolores");
+        names.add("Juanita");
 
         assertEquals(5, names.size());
 
         // Java lists are mutable
 
         // Approach 1. Remove by INDEX
-        names.remove(1); // Emma
-        assertFalse(names.contains("Emma"));
+        names.remove(1); // Beatriz
+        assertFalse(names.contains("Beatriz"));
         assertEquals(4, names.size());
 
         // Approach 2. Remove ELEMENT
-        names.remove("Daniela");
-        assertFalse(names.contains("Daniela"));
+        names.remove("Juanita");
+        assertFalse(names.contains("Juanita"));
         assertEquals(3, names.size());
     }
 
@@ -74,21 +74,21 @@ public class ListsJavaTest {
     @Test
     public void replaceElementTest(){
         List<String> names = new ArrayList<>();
-        names.add("Agata");
-        names.add("Emma");
-        names.add("Daniela");
-        names.add("Katarina");
-        names.add("Zsuzsi");
+        names.add("Alejandra");
+        names.add("Beatriz");
+        names.add("Carmen");
+        names.add("Dolores");
+        names.add("Juanita");
 
         // Appraoch 1 By index
-        assertEquals("Emma", names.get(1));
-        names.set(1, "Eva");
-        assertEquals("Eva", names.get(1));
+        assertEquals("Beatriz", names.get(1));
+        names.set(1, "Maria");
+        assertEquals("Maria", names.get(1));
 
         // Approach 2 With Collections.replaceAll
-        assertEquals("Daniela", names.get(2));
-        Collections.replaceAll(names, "Daniela", "Darina");
-        assertEquals("Darina", names.get(2));
+        assertEquals("Carmen", names.get(2));
+        Collections.replaceAll(names, "Carmen", "Sofia");
+        assertEquals("Sofia", names.get(2));
     }
 
     @Test
@@ -107,10 +107,10 @@ public class ListsJavaTest {
 
     @Test
     public void createSublistTest(){
-        List<String> original = Arrays.asList("Agata", "Emma", "Daniela", "Katarina", "Zsuzsi");
-        List<String> sublist = original.subList(0, 4);
-        assertTrue(sublist.contains("Katarina"));
-        assertFalse(sublist.contains("Zsuzsi"));
+        List<String> original = Arrays.asList("Alejandra", "Beatriz", "Carmen", "Dolores", "Juanita", "Katarina", "Maria");
+        List<String> sublist = original.subList(0, 5);
+        assertTrue(sublist.contains("Juanita"));
+        assertFalse(sublist.contains("Katarina"));
     }
 
     @Test
