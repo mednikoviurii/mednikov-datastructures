@@ -1,16 +1,17 @@
 package net.mednikov.datastructures.sets;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 
 import org.junit.Test;
 
 import net.mednikov.datastructures.core.Person;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class SetsJavaTest {
 
@@ -20,9 +21,7 @@ public class SetsJavaTest {
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
-        numbers.add(2); // allows no duplicates
-        int length = numbers.size();
-        assertEquals(3, length);
+        assertThat(numbers.add(2)).isFalse();
     }
 
     @Test
@@ -31,9 +30,7 @@ public class SetsJavaTest {
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
-        boolean removed = numbers.remove(3);
-        assertTrue(removed);
-        assertEquals(2, numbers.size());
+        assertThat(numbers.remove(3)).isTrue();
     }
 
     @Test
@@ -48,7 +45,7 @@ public class SetsJavaTest {
         // then first = 8
         Iterator<Integer> iterator = numbers.iterator();
         Integer first = iterator.next();
-        assertEquals(Integer.valueOf(8), first);
+        assertThat(first).isEqualTo(8);
 
         //use custom objects
         // people are ordered by the first name
@@ -58,6 +55,7 @@ public class SetsJavaTest {
         people.add(new Person("Maria", "Sanchez"));
         people.add(new Person("Robetra", "Iglesias"));
 
-        people.stream().forEach(System.out::println);
+        Optional<Person> person = people.stream().filter(p -> p.equals(new Person("Maria", "Sanchez"))).findFirst();
+        assertThat(person).isPresent();
     }
 }

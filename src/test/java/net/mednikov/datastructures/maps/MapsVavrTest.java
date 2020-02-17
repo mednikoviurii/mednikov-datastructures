@@ -1,14 +1,16 @@
 package net.mednikov.datastructures.maps;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
+
 
 import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
 import io.vavr.control.Option;
 import net.mednikov.datastructures.core.Person;
+
+import static org.assertj.core.api.Assertions.*;
+
 
 public class MapsVavrTest{
 
@@ -21,16 +23,7 @@ public class MapsVavrTest{
 
         // return new map
         Map<String, Person> updated = people.put("123 111 435", new Person("Maria", "Morales"));
-
-        int peopleSize = people.size(); // 3
-        int updatedSize = updated.size(); // 4
-
-        // updated NOT equals to people
-        boolean equals = people.equals(updated); // false
-
-        assertFalse(equals);
-        assertEquals(3, peopleSize);
-        assertEquals(4, updatedSize);
+        assertThat(people.toJavaMap()).doesNotContainKey("123 111 435");
     }
 
     @Test
@@ -44,16 +37,12 @@ public class MapsVavrTest{
         );
 
         Map<String, String> result = countries.remove("Czech Republic");
-        assertFalse(result.containsKey("Czech Republic"));
+        assertThat(result.toJavaMap()).doesNotContainKey("Czech Republic");
 
         // all elements with values which DO NOT satisfy the given predicate.
-        Map<String, String> notSpanishSpeaking = countries.filterNotValues(c->c.equalsIgnoreCase("es"));
-
-        // all elements that DO satisfy
-        Map<String, String> spanishSpeaking = countries.filterValues(c->c.equalsIgnoreCase("es"));
-
-        assertEquals(2, notSpanishSpeaking.size());
-        assertEquals(3, spanishSpeaking.size());
+        // Map<String, String> notSpanishSpeaking = countries.filterNotValues(c->c.equalsIgnoreCase("es"));
+        assertThat(countries.filterNotValues(c->c.equalsIgnoreCase("es"))).hasSize(2);
+        assertThat(countries.filterValues(c->c.equalsIgnoreCase("es"))).hasSize(3);
     }
 
     @Test
@@ -69,7 +58,7 @@ public class MapsVavrTest{
                     new Person("Katarina", "Marquez"));
 
         Option<Person> person = result.get("456 789 123");
-        assertEquals(person.get().getFirstName(), "Katarina");
+        assertThat(person.get().getFirstName()).isEqualToIgnoringCase("Katarina");
 
     }
 }

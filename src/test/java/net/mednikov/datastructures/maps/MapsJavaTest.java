@@ -1,8 +1,5 @@
 package net.mednikov.datastructures.maps;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 
 import java.util.HashMap;
 import java.util.TreeMap;
@@ -10,6 +7,9 @@ import java.util.TreeMap;
 import org.junit.Test;
 
 import net.mednikov.datastructures.core.Person;
+
+import static org.assertj.core.api.Assertions.*;
+
 
 public class MapsJavaTest{
 
@@ -20,7 +20,7 @@ public class MapsJavaTest{
         people.put(2, new Person("Beatriz", "Gomez"));
         people.put(3, new Person("Carmen", "Hidalgo"));
         people.put(4, new Person("Dolores", "Sanchez"));
-        assertEquals(new Person("Carmen", "Hidalgo"), people.get(3));
+        assertThat(people.get(3)).isEqualTo(new Person("Carmen", "Hidalgo"));
     }
 
     @Test
@@ -29,10 +29,9 @@ public class MapsJavaTest{
         people.put(1, new Person("Alejandra", "Gutierrez"));
         people.put(2, new Person("Beatriz", "Gomez"));
         people.put(3, new Person("Carmen", "Hidalgo"));
-        assertEquals(3, people.size());
+        assertThat(people).hasSize(3);
         people.remove(3);
-        assertEquals(2, people.size());
-        assertFalse(people.containsKey(3));
+        assertThat(people).doesNotContainKey(3);
     }
 
     @Test
@@ -43,11 +42,8 @@ public class MapsJavaTest{
         words.put("pineapple", "pina");
         words.put("lemon", "limon");
 
-        String cucumber = words.get("cucumber");
-        assertNull(cucumber);
-
-        String fruit = words.getOrDefault("cucumber", "not a fruit");
-        assertEquals("not a fruit", fruit);
+        assertThat(words.get("cucumber")).isNull();
+        assertThat(words.getOrDefault("cucumber", "not a fruit")).isEqualToIgnoringCase("not a fruit");
     }
 
     @Test
@@ -61,9 +57,9 @@ public class MapsJavaTest{
         words.replace("lemon", "limón");
         String limon = words.get("lemon");
 
-        assertEquals("limón", limon);
+        assertThat(limon).isEqualToIgnoringCase("limón");
 
         boolean result = words.replace("lemon", "limon", "un limon");
-        assertFalse(result);
+        assertThat(result).isFalse();
     }
 }

@@ -1,12 +1,13 @@
 package net.mednikov.datastructures.queues;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 import io.vavr.Tuple2;
 import io.vavr.collection.Queue;
 import net.mednikov.datastructures.core.Person;
+
+import static org.assertj.core.api.Assertions.*;
+
 
 public class QueuesVavrTest{
 
@@ -19,13 +20,11 @@ public class QueuesVavrTest{
         
         // vavr queues are immutable
         Queue<Person> result = people.enqueue(new Person("Juanita", "Iglesias"));
-        assertEquals(3, people.size());
-        assertEquals(4, result.size());
+        assertThat(people).doesNotContain(new Person("Juanita", "Iglesias"));
+        assertThat(result).hasSize(4);
 
         // queue is FIFO; elements are added to tail
-        Person peopleHead = people.head();
-        Person resultHead = result.head();
-        assertEquals(peopleHead, resultHead);
+        assertThat(people.head()).isEqualTo(result.head());
     }
 
     @Test
@@ -34,8 +33,7 @@ public class QueuesVavrTest{
             new Person("Alejandra", "Velasquez"), 
             new Person("Beatriz", "Hidalgo"), 
             new Person("Carmen", "Sanchez"));
-        Queue<Person> tail = people.tail();
-        assertEquals(2, tail.size());
+        assertThat(people.tail()).hasSize(2);
     }
 
     @Test
@@ -49,9 +47,8 @@ public class QueuesVavrTest{
         // first is head
         Person head = result._1();
         Queue<Person> remainingPeople = result._2();
-        assertEquals("Alejandra", head.getFirstName());
-        assertEquals(2, remainingPeople.size());
-        assertEquals("Beatriz", remainingPeople.head().getFirstName());
+        assertThat(head.getFirstName()).isEqualToIgnoringCase("Alejandra");
+        assertThat(remainingPeople).hasSize(2);
 
     }
 }

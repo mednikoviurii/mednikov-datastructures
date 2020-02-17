@@ -1,9 +1,5 @@
 package net.mednikov.datastructures.lists;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,6 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class ListsJavaTest {
 
@@ -23,11 +21,11 @@ public class ListsJavaTest {
         numbers.add(20);
         numbers.add(25);
         numbers.add(30);
-        assertEquals(5, numbers.size());
+        assertThat(numbers.add(66)).isTrue();
 
         //Approach 2. Use Arrays.asList. IMMUTABLE!
         List<String> names = Arrays.asList("Alejandra", "Beatriz", "Carmen", "Dolores", "Juanita");
-        assertEquals(5, names.size());
+        assertThatExceptionThrownBy(() -> names.add("Maria")).isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test
@@ -39,19 +37,11 @@ public class ListsJavaTest {
         names.add("Dolores");
         names.add("Juanita");
 
-        assertEquals(5, names.size());
-
-        // Java lists are mutable
-
         // Approach 1. Remove by INDEX
-        names.remove(1); // Beatriz
-        assertFalse(names.contains("Beatriz"));
-        assertEquals(4, names.size());
+        assertThat(names.remove(1)).isEqualToIgnoringCase("Beatriz");
 
         // Approach 2. Remove ELEMENT
-        names.remove("Juanita");
-        assertFalse(names.contains("Juanita"));
-        assertEquals(3, names.size());
+        assertThat(names.remove("Juanita")).isTrue();
     }
 
     @Test
@@ -68,7 +58,7 @@ public class ListsJavaTest {
             .filter(number->number%2==0)
             .collect(Collectors.toList());
         
-        assertEquals(3, evenNumbers.size());
+        assertThat(evenNumbers).hasSize(3);
     }
 
     @Test
@@ -81,36 +71,29 @@ public class ListsJavaTest {
         names.add("Juanita");
 
         // Appraoch 1 By index
-        assertEquals("Beatriz", names.get(1));
         names.set(1, "Maria");
-        assertEquals("Maria", names.get(1));
+        assertThat(names.get(1)).isEqualToIgnoringCase("Maria");
 
         // Approach 2 With Collections.replaceAll
-        assertEquals("Carmen", names.get(2));
         Collections.replaceAll(names, "Carmen", "Sofia");
-        assertEquals("Sofia", names.get(2));
+        assertThat(names).containsExactly("Alejandra", "Maria", "Sofia", "Dolores", "Juanita");
     }
 
     @Test
     public void searchForElementTest(){
-        List<Integer> numbers = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);
-        int positionOf45 = numbers.indexOf(45);
-        assertEquals(4, positionOf45);
+        List<Integer> numbers = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);;
+        assertThat(numbers.indexOf(45)).isEqualTo(4);
 
         // using lastIndexOf
         List<Integer> numbers2 = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 45, 6, 13);
-        // we have 2x 45
-
-        int positionLast = numbers2.lastIndexOf(45);
-        assertEquals(8, positionLast);
+        assertThat(numbers2.lastIndexOf(45)).isEqualTo(8);
     }
 
     @Test
     public void createSublistTest(){
         List<String> original = Arrays.asList("Alejandra", "Beatriz", "Carmen", "Dolores", "Juanita", "Katarina", "Maria");
         List<String> sublist = original.subList(0, 5);
-        assertTrue(sublist.contains("Juanita"));
-        assertFalse(sublist.contains("Katarina"));
+        assertThat(sublist).contains("Juanita").doesNotContain("Katarina");
     }
 
     @Test
@@ -119,17 +102,14 @@ public class ListsJavaTest {
         List<Integer> list2 = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);
 
         // Approach 1. with equals
-        boolean areEqual = list1.equals(list2);
-        assertTrue(areEqual);
+        assertThat(list1).isEqualTo(list2);
 
         // Approach 2. with streams
         List<Integer> list3 = Arrays.asList(1, 12, 52, 39, 45, 100, 98, 6, 13, 565);
-        // list3 has same selements in the different order
-        boolean areEqual2 = list1.equals(list3);
-        assertFalse(areEqual2);
+        assertThat(list1).isNotEqualTo(list3);
 
-        boolean allMatch = list3.stream().allMatch(number -> list1.contains(number));
-        assertTrue(allMatch);
+        // boolean allMatch = list3.stream().allMatch(number -> list1.contains(number));;
+        assertThat(list3.stream().allMatch(number -> list1.contains(number))).isTrue();
     }
 
     @Test
@@ -139,8 +119,7 @@ public class ListsJavaTest {
         numbers.add(2);
         numbers.add(3);
         numbers.add(51);
-        System.out.println(numbers);
         numbers.remove(Integer.valueOf(2));
-        System.out.println(numbers);
+        assertThat(numbers).doesNotContain(2);
     }
 }
