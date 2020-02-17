@@ -10,6 +10,9 @@ import org.junit.Test;
 import net.mednikov.datastructures.core.Car;
 import net.mednikov.datastructures.core.Person;
 
+import static org.assertj.core.api.Assertions.*;
+
+
 public class QueuesJavaTest {
 
     @Test
@@ -22,12 +25,8 @@ public class QueuesJavaTest {
         people.offer(new Person("Beatriz", "Sanchez"));
         people.offer(new Person("Carmen", "Hidalgo"));
         
-        Person head = people.peek();
-
         // head of queue is Alejandra Morales
-
-        assertEquals("Alejandra", head.getFirstName());
-        assertEquals("Morales", head.getLastName());
+        assertThat(people.peek()).isEqualTo(new Person("Alejandra", "Morales"));
     }
 
     @Test
@@ -43,8 +42,8 @@ public class QueuesJavaTest {
         // step 2 remove head
         tail.poll();
 
-        assertEquals(2, tail.size());
-        assertEquals("Beatriz", tail.peek().getFirstName());
+        assertThat(tail).hasSize(2);
+
     }
 
     @Test
@@ -58,7 +57,6 @@ public class QueuesJavaTest {
         // remove previous head (Skoda) -> new head = mazda
 
         cars.poll();
-        Car head = cars.peek();
-        assertEquals(1234, head.getLicensePlateNumber());
+        assertThat(cars.peek().getLicensePlateNumber()).isEqualTo(1234);
     }
 }

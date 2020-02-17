@@ -1,12 +1,13 @@
 package net.mednikov.datastructures.arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class ArraysJavaTest{
 
@@ -27,39 +28,31 @@ public class ArraysJavaTest{
         // step 3. add new element
         names2[oldLength] = name;
 
-        assertEquals(name, names2[oldLength]);
+        assertThat(name).isEqualToIgnoringCase(names2[oldLength]);
     }
 
     @Test
     public void arrayIsObjectTest(){
       int[] numbers = new int[10];
-      boolean result = numbers instanceof Object;
-
-      assertTrue(result);
+      assertThat(numbers).isInstanceOf(Object.class);
     }
 
     @Test
     public void replaceArrayElementTest(){
       int[] numbers = {1,2,3,4,5};
       int i3 = numbers[3];
-
-      assertEquals(4, i3);
+      assertThat(i3).isEqualTo(4);
 
       numbers[3] = 15;
       i3 = numbers[3];
-
-      assertEquals(15, i3);
+      assertThat(i3).isEqualTo(15);
     }
 
     @Test 
     public void filterArrayTest(){
       String[] names = {"Alejandra", "Beatriz", "Aneta", "Carmen", "Ana", "Gabriela", "Alisa"};
-
-      assertEquals(7, names.length);
-
-      long res = Arrays.stream(names).filter(name->name.startsWith("A")).count();
-
-      assertEquals(4, res);
+      List<String> result = Arrays.stream(names).filter(name->name.startsWith("A")).collect(Collectors.toList());
+      assertThat(result).contains("Alejandra", "Ana", "Alisa", "Aneta");
     }
 
     @Test
@@ -67,22 +60,18 @@ public class ArraysJavaTest{
       int[] numbers = {5, 12, 6, 1, 32};
       Arrays.sort(numbers);
       int i3 = numbers[3];
-
-      assertEquals(12, i3);
+      assertThat(i3).isEqualTo(12);
 
       Integer[] numbers2 = {15, 98, 1, 9, 14, 32};
 	    Arrays.sort(numbers2, Collections.reverseOrder());
       int i4 = numbers2[4];
-      
-	    assertEquals(9, i4);
+      assertThat(i4).isEqualTo(9);
     }
 
     @Test
     public void equalsTest(){
       int[] numbers = {15, 98, 1, 9, 14, 32};
       int[] numbers2 = {15, 98, 1, 9, 14, 32};
-      boolean result = Arrays.equals(numbers, numbers2);
-      
-      assertTrue(result);
+      assertThat(numbers).isEqualTo(numbers2);
     }
 }
