@@ -74,4 +74,11 @@ public class ArraysJavaTest{
       int[] numbers2 = {15, 98, 1, 9, 14, 32};
       assertThat(numbers).isEqualTo(numbers2);
     }
+
+    @Test
+    public void accessElementTest(){
+      int[] numbers = {1,2,3,4,5};
+      int value = numbers[2];
+      assertThat(value).isEqualTo(3);
+    }
 }
