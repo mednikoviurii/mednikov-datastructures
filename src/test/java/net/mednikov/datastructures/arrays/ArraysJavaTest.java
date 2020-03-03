@@ -81,4 +81,11 @@ public class ArraysJavaTest{
       int value = numbers[2];
       assertThat(value).isEqualTo(3);
     }
+
+    @Test
+    public void getArrayLengthTest() {
+      int[] numbers = {15, 98, 1, 9, 14, 32};
+      int length = numbers.length;
+      assertThat(length).isEqualTo(6);
+    }
 }
