@@ -66,7 +66,8 @@ public class CollectionsTest {
 
         // create iterator
         Iterator<Post> iterator = posts.iterator();
-        // Option 1 with while
+        // Option 1 with hasNext
+        System.out.println("Iteration using iterator hasNext");
         while(iterator.hasNext()){
             Post post = iterator.next();
             System.out.println(post);
@@ -74,10 +75,16 @@ public class CollectionsTest {
 
         Iterator<Post> iterator2 = posts.iterator();
         // Option 2 using forEachRemaining
+        System.out.println("Iteration using iterator forEachRemaining");
         iterator2.forEachRemaining(p -> System.out.println(p));
 
         // using forEach
+        System.out.println("Iteration using forEach");
         posts.forEach(System.out::println);
+
+        // using stream
+        System.out.println("Iteration using stream");
+        posts.stream().forEach(p -> System.out.println(p));
     }
 
     private List<Post> getPosts(){
