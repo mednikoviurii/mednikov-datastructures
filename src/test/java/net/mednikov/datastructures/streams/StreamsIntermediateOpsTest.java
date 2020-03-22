@@ -57,17 +57,16 @@ public class StreamsIntermediateOpsTest {
 
     @Test
     public void filterTest(){
-        final List<String> names = Arrays.asList("Alejandra", "Beatriz", "Aneta", "Carmen", "Ana", "Gabriela", "Alisa");
-        Stream<String> stream = names.stream();
+        Stream<String> stream = getNames().stream();
         long result = stream.filter(n -> n.startsWith("A")).count();
         assertThat(result).isEqualTo(4);
     }
 
     @Test
     public void mapTest(){
-        Stream<String> stream = Stream.of("Alejandra", "Beatriz", "Carmen", "Dolores", "Juanita");
+        Stream<String> stream = getNames().stream();
         int result = stream.mapToInt(n -> n.length()).sum();
-        assertThat(result).isEqualTo(36);
+        assertThat(result).isEqualTo(43);
     }
 
     @Test
@@ -96,10 +95,19 @@ public class StreamsIntermediateOpsTest {
 
     @Test
     public void limitTest(){
-        List<Integer> numbers = Arrays.asList(-9, -18, 0, 12, -5, 92, 13, 50, -75, 25, 4); 
-        Stream<Integer> stream = numbers.stream();
+        Stream<Integer> stream = getNumbers().stream();
         Set<Integer> result = stream.sorted().limit(5).collect(Collectors.toSet());
         System.out.println(result);
         assertThat(result).contains(-75, -18, -9, -5, 0);
+    }
+
+    private List<Integer> getNumbers(){
+        List<Integer> numbers = Arrays.asList(-9, -18, 0, 12, -5, 92, 13, 50, -75, 25, 4);
+        return numbers;
+    }
+
+    private List<String> getNames(){
+        List<String> names = Arrays.asList("Alejandra", "Beatriz", "Aneta", "Carmen", "Ana", "Gabriela", "Alisa");
+        return names;
     }
 }

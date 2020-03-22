@@ -12,12 +12,15 @@ import static org.assertj.core.api.Assertions.*;
 
 
 public class StreamsTerminalOpsTest {
-
-    private final List<String> names = Arrays.asList("Anna", "Bob", "Carolina", "Denis", "Anna", "Jack", "Marketa", "Simon", "Anna"); 
+    
+    private List<String> getNames(){
+        List<String> names = Arrays.asList("Anna", "Bob", "Carolina", "Denis", "Anna", "Jack", "Marketa", "Simon", "Anna"); 
+        return names;
+    }
 
     @Test
     public void forEachTest(){
-        Stream<String> stream = names.stream();
+        Stream<String> stream = getNames().stream();
 
         stream.filter(n -> !n.equalsIgnoreCase("Anna"))
                 .map(n -> n.toUpperCase())
@@ -26,7 +29,7 @@ public class StreamsTerminalOpsTest {
 
     @Test
     public void collectTest(){
-        Stream<String> stream = names.stream();
+        Stream<String> stream = getNames().stream();
         List<Integer> result = stream.filter(n -> n.length() <= 4)
                         .map(n -> n.length()).collect(Collectors.toList());
         assertThat(result).hasSize(5);
@@ -34,7 +37,7 @@ public class StreamsTerminalOpsTest {
 
     @Test
     public void findTest(){
-        Stream<String> stream = names.stream();
+        Stream<String> stream = getNames().stream();
         Optional<String> result = stream.filter(n -> n.length() < 4).findFirst();
         assertThat(result).isPresent();
         assertThat(result.get()).isEqualToIgnoringCase("Bob");
