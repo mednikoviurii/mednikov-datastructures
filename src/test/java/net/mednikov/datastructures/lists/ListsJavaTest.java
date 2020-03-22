@@ -13,6 +13,17 @@ import static org.assertj.core.api.Assertions.*;
 public class ListsJavaTest {
 
     @Test
+    public void accessElementTest() {
+        List<Integer> numbers = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);
+        int beginning = numbers.get(0);
+        int value = numbers.get(5);
+        int end = numbers.get(numbers.size()-1);
+        assertThat(beginning).isEqualTo(1);
+        assertThat(value).isEqualTo(98);
+        assertThat(end).isEqualTo(13);
+    }
+
+    @Test
     public void addElementsToListTest () {
         // Approach 1. Create new list and use add() MUTABLE!
         List<Integer> numbers = new ArrayList<>();
@@ -81,7 +92,7 @@ public class ListsJavaTest {
 
     @Test
     public void searchForElementTest(){
-        List<Integer> numbers = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);;
+        List<Integer> numbers = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);
         assertThat(numbers.indexOf(45)).isEqualTo(4);
 
         // using lastIndexOf
