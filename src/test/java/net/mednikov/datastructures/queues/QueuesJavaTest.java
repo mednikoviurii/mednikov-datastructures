@@ -59,4 +59,16 @@ public class QueuesJavaTest {
         cars.poll();
         assertThat(cars.peek().getLicensePlateNumber()).isEqualTo(1234);
     }
+
+    @Test
+    public void getHeadTest(){
+        Queue<Person> people = new ArrayDeque<>();
+        people.offer(new Person("Alejandra", "Morales"));
+        people.offer(new Person("Beatriz", "Sanchez"));
+        people.offer(new Person("Carmen", "Hidalgo"));
+
+        Person element = people.element();
+        Person peek = people.peek();
+        assertThat(element).isEqualTo(peek);
+    }
 }
