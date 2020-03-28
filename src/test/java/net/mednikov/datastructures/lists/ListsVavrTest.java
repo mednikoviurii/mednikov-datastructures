@@ -2,16 +2,16 @@ package net.mednikov.datastructures.lists;
 
 import org.assertj.core.api.Assertions;
 import org.assertj.vavr.api.VavrAssertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import io.vavr.collection.List;
 import io.vavr.control.Option;
 
 
-public class ListsVavrTest {
+class ListsVavrTest {
 
     @Test
-    public void addElementsToListTest(){
+    void addElementsToListTest(){
         List<String> names = List.of("Alejandra", "Beatriz", "Carmen", "Dolores");
 
         // Vavr collections are IMMUTABLE
@@ -24,7 +24,7 @@ public class ListsVavrTest {
     }
 
     @Test
-    public void removeElementFromListTest(){
+    void removeElementFromListTest(){
         List<String> names = List.of("Alejandra", "Beatriz", "Carmen", "Dolores", "Juanita");
 
         List<String> results = names.remove("Dolores");
@@ -38,21 +38,21 @@ public class ListsVavrTest {
     }
 
     @Test
-    public void filterListTest(){
+    void filterListTest(){
         List<Integer> numbers = List.of(12, 33, 65, 19, 72, 14, 2, 99, 40, 30, 27);
         List<Integer> evenNumbers = numbers.filter(number->number%2==0);
         VavrAssertions.assertThat(evenNumbers).hasSize(6);
     }
 
     @Test
-    public void replaceElementTest(){
+    void replaceElementTest(){
         List<String> names = List.of("Alejandra", "Beatriz", "Carmen", "Dolores");
         List<String> results = names.replace("Beatriz", "Maria");
         VavrAssertions.assertThat(results).doesNotContain("Beatriz");
     }
 
     @Test
-    public void searchForElementTest(){
+    void searchForElementTest(){
         List<String> names = List.of("Alejandra", "Beatriz", "Carmen", "Dolores", "Juanita");
         int index = names.indexOf("Juanita");
         Assertions.assertThat(index).isEqualTo(4);
@@ -62,7 +62,7 @@ public class ListsVavrTest {
     }
 
     @Test
-    public void createSublistTest(){
+    void createSublistTest(){
         List<Integer> original = List.of(54, 12, 29, 13, 95, 65, 285, 90, 5431);
         List<Integer> sublist = original.slice(0, 5); // end index not inlcuded
         VavrAssertions.assertThat(sublist).containsExactly(54, 12, 29, 13, 95).doesNotContain(65);
@@ -70,7 +70,7 @@ public class ListsVavrTest {
     }
 
     @Test
-    public void compareListsTest(){
+    void compareListsTest(){
         List<Integer> numbers1 = List.of(12, 33, 65, 19, 72, 14, 2, 99, 40, 30, 27);
         List<Integer> numbers2 = List.of(12, 33, 65, 19, 72, 14, 2, 99, 40, 30, 27);
         VavrAssertions.assertThat(numbers1).isEqualTo(numbers2);

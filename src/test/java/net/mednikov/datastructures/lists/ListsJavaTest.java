@@ -6,14 +6,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class ListsJavaTest {
+class ListsJavaTest {
 
     @Test
-    public void accessElementTest() {
+    void accessElementTest() {
         List<Integer> numbers = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);
         int beginning = numbers.get(0);
         int value = numbers.get(5);
@@ -24,7 +24,7 @@ public class ListsJavaTest {
     }
 
     @Test
-    public void addElementsToListTest () {
+    void addElementsToListTest () {
         // Approach 1. Create new list and use add() MUTABLE!
         List<Integer> numbers = new ArrayList<>();
         numbers.add(10);
@@ -40,7 +40,7 @@ public class ListsJavaTest {
     }
 
     @Test
-    public void removeElementFromListTest() {
+    void removeElementFromListTest() {
         List<String> names = new ArrayList<>();
         names.add("Alejandra");
         names.add("Beatriz");
@@ -56,7 +56,7 @@ public class ListsJavaTest {
     }
 
     @Test
-    public void filterListTest(){
+    void filterListTest(){
         List<Integer> numbers = new ArrayList<>();
         numbers.add(45);
         numbers.add(12);
@@ -73,7 +73,7 @@ public class ListsJavaTest {
     }
 
     @Test
-    public void replaceElementTest(){
+    void replaceElementTest(){
         List<String> names = new ArrayList<>();
         names.add("Alejandra");
         names.add("Beatriz");
@@ -91,7 +91,7 @@ public class ListsJavaTest {
     }
 
     @Test
-    public void searchForElementTest(){
+    void searchForElementTest(){
         List<Integer> numbers = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);
         assertThat(numbers.indexOf(45)).isEqualTo(4);
 
@@ -101,14 +101,14 @@ public class ListsJavaTest {
     }
 
     @Test
-    public void createSublistTest(){
+    void createSublistTest(){
         List<String> original = Arrays.asList("Alejandra", "Beatriz", "Carmen", "Dolores", "Juanita", "Katarina", "Maria");
         List<String> sublist = original.subList(0, 5);
         assertThat(sublist).contains("Juanita").doesNotContain("Katarina");
     }
 
     @Test
-    public void compareListsTest(){
+    void compareListsTest(){
         List<Integer> list1 = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);
         List<Integer> list2 = Arrays.asList(1, 52, 12, 39, 45, 98, 100, 565, 6, 13);
 
@@ -124,7 +124,7 @@ public class ListsJavaTest {
     }
 
     @Test
-    public void removeOverloadedTest(){
+    void removeOverloadedTest(){
         List<Integer> numbers =  new ArrayList<>();
         numbers.add(12);
         numbers.add(2);

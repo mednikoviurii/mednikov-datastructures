@@ -2,17 +2,17 @@ package net.mednikov.datastructures.queues;
 
 import org.assertj.core.api.Assertions;
 import org.assertj.vavr.api.VavrAssertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import io.vavr.Tuple2;
 import io.vavr.collection.Queue;
 import net.mednikov.datastructures.core.Person;
 
 
-public class QueuesVavrTest{
+class QueuesVavrTest{
 
     @Test
-    public void enqueueTest(){
+    void enqueueTest(){
         Queue<Person> people = Queue.of(
             new Person("Alejandra", "Velasquez"), 
             new Person("Beatriz", "Hidalgo"), 
@@ -27,7 +27,7 @@ public class QueuesVavrTest{
     }
 
     @Test
-    public void getTailTest(){
+    void getTailTest(){
         Queue<Person> people = Queue.of(
             new Person("Alejandra", "Velasquez"), 
             new Person("Beatriz", "Hidalgo"), 
@@ -36,7 +36,7 @@ public class QueuesVavrTest{
     }
 
     @Test
-    public void dequeueTest(){
+    void dequeueTest(){
         Queue<Person> people = Queue.of(
             new Person("Alejandra", "Velasquez"), 
             new Person("Beatriz", "Hidalgo"), 

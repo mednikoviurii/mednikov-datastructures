@@ -5,14 +5,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class ArraysJavaTest{
+class ArraysJavaTest{
 
     @Test
-    public void addElementToArrayTest(){
+    void addElementToArrayTest(){
         // declare array
         String[] names = {"Alejandra", "Beatriz", "Carmen", "Dolores"};
 
@@ -32,13 +32,13 @@ public class ArraysJavaTest{
     }
 
     @Test
-    public void arrayIsObjectTest(){
+    void arrayIsObjectTest(){
       int[] numbers = new int[10];
       assertThat(numbers).isInstanceOf(Object.class);
     }
 
     @Test
-    public void replaceArrayElementTest(){
+    void replaceArrayElementTest(){
       int[] numbers = {1,2,3,4,5};
       int i3 = numbers[3];
       assertThat(i3).isEqualTo(4);
@@ -49,14 +49,14 @@ public class ArraysJavaTest{
     }
 
     @Test 
-    public void filterArrayTest(){
+    void filterArrayTest(){
       String[] names = {"Alejandra", "Beatriz", "Aneta", "Carmen", "Ana", "Gabriela", "Alisa"};
       List<String> result = Arrays.stream(names).filter(name->name.startsWith("A")).collect(Collectors.toList());
       assertThat(result).contains("Alejandra", "Ana", "Alisa", "Aneta");
     }
 
     @Test
-    public void sortArrayTest(){
+    void sortArrayTest(){
       int[] numbers = {5, 12, 6, 1, 32};
       Arrays.sort(numbers);
       int i3 = numbers[3];
@@ -69,21 +69,21 @@ public class ArraysJavaTest{
     }
 
     @Test
-    public void equalsTest(){
+    void equalsTest(){
       int[] numbers = {15, 98, 1, 9, 14, 32};
       int[] numbers2 = {15, 98, 1, 9, 14, 32};
       assertThat(numbers).isEqualTo(numbers2);
     }
 
     @Test
-    public void accessElementTest(){
+    void accessElementTest(){
       int[] numbers = {1,2,3,4,5};
       int value = numbers[2];
       assertThat(value).isEqualTo(3);
     }
 
     @Test
-    public void getArrayLengthTest() {
+    void getArrayLengthTest() {
       int[] numbers = {15, 98, 1, 9, 14, 32};
       int length = numbers.length;
       assertThat(length).isEqualTo(6);

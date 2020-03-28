@@ -1,7 +1,6 @@
 package net.mednikov.datastructures.maps;
 
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 
 import io.vavr.collection.HashMap;
@@ -12,10 +11,10 @@ import net.mednikov.datastructures.core.Person;
 import static org.assertj.core.api.Assertions.*;
 
 
-public class MapsVavrTest{
+class MapsVavrTest{
 
     @Test
-    public void addToMapTest(){
+    void addToMapTest(){
         Map<String, Person> people = HashMap.of(
         "123 456 789", new Person("Alejandra", "Sanchez"),
         "456 789 123", new Person("Beatriz", "Hidalgo"),
@@ -27,7 +26,7 @@ public class MapsVavrTest{
     }
 
     @Test
-    public void removeFromMapTest(){
+    void removeFromMapTest(){
         Map<String, String> countries = HashMap.of(
             "Spain", "es",
             "Colombia", "es",
@@ -46,7 +45,7 @@ public class MapsVavrTest{
     }
 
     @Test
-    public void replaceElementTest(){
+    void replaceElementTest(){
         Map<String, Person> people = HashMap.of(
         "123 456 789", new Person("Alejandra", "Sanchez"),
         "456 789 123", new Person("Beatriz", "Hidalgo"),
