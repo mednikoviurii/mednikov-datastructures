@@ -7,16 +7,16 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import net.mednikov.datastructures.core.Person;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class SetsJavaTest {
+class SetsJavaTest {
 
     @Test
-    public void addToSetTest(){
+    void addToSetTest(){
         Set<Integer> numbers = new HashSet<>();
         numbers.add(1);
         numbers.add(2);
@@ -25,7 +25,7 @@ public class SetsJavaTest {
     }
 
     @Test
-    public void removeFromSetTest(){
+    void removeFromSetTest(){
         Set<Integer> numbers = new HashSet<>();
         numbers.add(1);
         numbers.add(2);
@@ -34,7 +34,7 @@ public class SetsJavaTest {
     }
 
     @Test
-    public void getAnElementTest(){
+    void getAnElementTest(){
         TreeSet<Integer> numbers = new TreeSet<>();
         numbers.add(50);
         numbers.add(10);

@@ -5,17 +5,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import net.mednikov.datastructures.core.Post;
 
 import static org.assertj.core.api.Assertions.*;
 
 
-public class CollectionsTest {
+class CollectionsTest {
 
     @Test
-    public void insertTest(){
+    void insertTest(){
         // get mock posts
         List<Post> posts = getPosts();
 
@@ -31,7 +31,7 @@ public class CollectionsTest {
     }
 
     @Test
-    public void removeTest(){
+    void removeTest(){
         // get mock posts
         List<Post> posts = getPosts();
 
@@ -54,14 +54,14 @@ public class CollectionsTest {
     }
 
     @Test
-    public void streamTest(){
+    void streamTest(){
         List<Post> posts = getPosts();
         Stream<Post> stream = posts.stream();
         assertThat(stream).isInstanceOf(Stream.class);
     }
 
     @Test
-    public void iterationTest(){
+    void iterationTest(){
         List<Post> posts = getPosts();
 
         // create iterator

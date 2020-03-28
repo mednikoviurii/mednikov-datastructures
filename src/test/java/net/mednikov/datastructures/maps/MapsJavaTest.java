@@ -4,17 +4,17 @@ package net.mednikov.datastructures.maps;
 import java.util.HashMap;
 import java.util.TreeMap;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import net.mednikov.datastructures.core.Person;
 
 import static org.assertj.core.api.Assertions.*;
 
 
-public class MapsJavaTest{
+class MapsJavaTest{
 
     @Test
-    public void addToMapTest(){
+    void addToMapTest(){
         HashMap<Integer, Person> people = new HashMap<>();
         people.put(1, new Person("Alejandra", "Gutierrez"));
         people.put(2, new Person("Beatriz", "Gomez"));
@@ -24,7 +24,7 @@ public class MapsJavaTest{
     }
 
     @Test
-    public void removeFromMapTest(){
+    void removeFromMapTest(){
         HashMap<Integer, Person> people = new HashMap<>();
         people.put(1, new Person("Alejandra", "Gutierrez"));
         people.put(2, new Person("Beatriz", "Gomez"));
@@ -35,7 +35,7 @@ public class MapsJavaTest{
     }
 
     @Test
-    public void getFromMapTest(){
+    void getFromMapTest(){
         TreeMap<String, String> words = new TreeMap<>();
         words.put("apple", "manzana");
         words.put("orange", "naranja");
@@ -47,7 +47,7 @@ public class MapsJavaTest{
     }
 
     @Test
-    public void replaceElementTest(){
+    void replaceElementTest(){
         TreeMap<String, String> words = new TreeMap<>();
         words.put("apple", "manzana");
         words.put("orange", "naranja");

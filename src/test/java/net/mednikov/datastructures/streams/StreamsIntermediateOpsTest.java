@@ -7,17 +7,17 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import net.mednikov.datastructures.core.Person;
 import net.mednikov.datastructures.core.Point;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class StreamsIntermediateOpsTest {
+class StreamsIntermediateOpsTest {
 
     @Test
-    public void createStreamTest() {
+    void createStreamTest() {
         // from collections
         final List<String> names = Arrays.asList("Alejandra", "Beatriz", "Carmen", "Dolores", "Juanita");
         Stream<String> namesStream = names.stream();
@@ -56,21 +56,21 @@ public class StreamsIntermediateOpsTest {
     }
 
     @Test
-    public void filterTest(){
+    void filterTest(){
         Stream<String> stream = getNames().stream();
         long result = stream.filter(n -> n.startsWith("A")).count();
         assertThat(result).isEqualTo(4);
     }
 
     @Test
-    public void mapTest(){
+    void mapTest(){
         Stream<String> stream = getNames().stream();
         int result = stream.mapToInt(n -> n.length()).sum();
         assertThat(result).isEqualTo(43);
     }
 
     @Test
-    public void distinctTest(){
+    void distinctTest(){
         List<Integer> numbers = Arrays.asList(1, 1, 2, 3, 3, 4, 5, 5); 
         Stream<Integer> stream = numbers.stream();
         long result = stream.distinct().count();
@@ -78,7 +78,7 @@ public class StreamsIntermediateOpsTest {
     }
 
     @Test
-    public void sortTest(){
+    void sortTest(){
         List<Integer> numbers = Arrays.asList(-9, -18, 0, 25, 4); 
         Stream<Integer> stream = numbers.stream();
         List<Integer> result = stream.sorted().collect(Collectors.toList());
@@ -86,7 +86,7 @@ public class StreamsIntermediateOpsTest {
     }
 
     @Test
-    public void whileTest(){
+    void whileTest(){
         Set<Integer> numbers = Set.of(1,2,3,4,5,6,7,8);
         Stream<Integer> stream = numbers.stream();
         Set<Integer> result = stream.takeWhile(x-> x < 5).collect(Collectors.toSet());
@@ -94,7 +94,7 @@ public class StreamsIntermediateOpsTest {
     }
 
     @Test
-    public void limitTest(){
+    void limitTest(){
         Stream<Integer> stream = getNumbers().stream();
         Set<Integer> result = stream.sorted().limit(5).collect(Collectors.toSet());
         System.out.println(result);

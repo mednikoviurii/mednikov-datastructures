@@ -3,14 +3,14 @@ package net.mednikov.datastructures.datetime;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class DateTimeTest {
+class DateTimeTest {
 
     @Test
-    public void equalsTest(){
+    void equalsTest(){
         LocalDateTime date1 = LocalDate.of(2013, 3, 5).atStartOfDay();
         LocalDateTime date2 = date1.plusHours(12).plusMinutes(30);
         assertThat(date1).isEqualToIgnoringHours(date2);
@@ -20,14 +20,14 @@ public class DateTimeTest {
     }
 
     @Test
-    public void beforeTest(){
+    void beforeTest(){
         LocalDateTime date = LocalDate.of(1992, 2, 14).atStartOfDay();
         assertThat(date).matches(d -> d.isBefore(LocalDateTime.now()));
         assertThat(date).isBefore(LocalDateTime.now());
     }
 
     @Test
-    public void afterTest(){
+    void afterTest(){
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime after = now.plusDays(10);
         assertThat(after).matches(d -> d.isAfter(now));

@@ -1,7 +1,7 @@
 package net.mednikov.datastructures.sets;
 
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import io.vavr.collection.HashSet;
 import io.vavr.collection.Set;
@@ -10,24 +10,24 @@ import net.mednikov.datastructures.core.FuelableCar;
 import static org.assertj.core.api.Assertions.*;
 
 
-public class SetsVavrTest{
+class SetsVavrTest{
 
     @Test
-    public void addToSetTest(){
+    void addToSetTest(){
         Set<Integer> numbers = HashSet.ofAll(15, 25, 10, 19, 93);
         assertThat(numbers.add(100)).contains(100);
         assertThat(numbers).doesNotContain(100);
     }
 
     @Test
-    public void removeFromSetTest(){
+    void removeFromSetTest(){
         Set<Integer> numbers = HashSet.ofAll(15, 25, 10, 19, 93);
         assertThat(numbers.remove(25)).doesNotContain(25);
         assertThat(numbers).contains(25);
     }
 
     @Test
-    public void replaceTest(){
+    void replaceTest(){
         Set<FuelableCar> cars = HashSet
             .of(new FuelableCar(1234, "Skoda rapid", 100), 
                 new FuelableCar(2314, "VW Gold", 100),

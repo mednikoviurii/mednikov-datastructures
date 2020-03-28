@@ -6,12 +6,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 
-public class StreamsTerminalOpsTest {
+class StreamsTerminalOpsTest {
     
     private List<String> getNames(){
         List<String> names = Arrays.asList("Anna", "Bob", "Carolina", "Denis", "Anna", "Jack", "Marketa", "Simon", "Anna"); 
@@ -19,7 +19,7 @@ public class StreamsTerminalOpsTest {
     }
 
     @Test
-    public void forEachTest(){
+    void forEachTest(){
         Stream<String> stream = getNames().stream();
 
         stream.filter(n -> !n.equalsIgnoreCase("Anna"))
@@ -28,7 +28,7 @@ public class StreamsTerminalOpsTest {
     }
 
     @Test
-    public void collectTest(){
+    void collectTest(){
         Stream<String> stream = getNames().stream();
         List<Integer> result = stream.filter(n -> n.length() <= 4)
                         .map(n -> n.length()).collect(Collectors.toList());
@@ -36,7 +36,7 @@ public class StreamsTerminalOpsTest {
     }
 
     @Test
-    public void findTest(){
+    void findTest(){
         Stream<String> stream = getNames().stream();
         Optional<String> result = stream.filter(n -> n.length() < 4).findFirst();
         assertThat(result).isPresent();

@@ -1,11 +1,9 @@
 package net.mednikov.datastructures.queues;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import net.mednikov.datastructures.core.Car;
 import net.mednikov.datastructures.core.Person;
@@ -13,10 +11,10 @@ import net.mednikov.datastructures.core.Person;
 import static org.assertj.core.api.Assertions.*;
 
 
-public class QueuesJavaTest {
+class QueuesJavaTest {
 
     @Test
-    public void enqueueTest(){
+    void enqueueTest(){
         Queue<Person> people = new ArrayDeque<>();
 
         // people are inserted in the tail, so head is same
@@ -30,7 +28,7 @@ public class QueuesJavaTest {
     }
 
     @Test
-    public void getTailTest(){
+    void getTailTest(){
         Queue<Person> people = new ArrayDeque<>();
         people.offer(new Person("Alejandra", "Morales"));
         people.offer(new Person("Beatriz", "Sanchez"));
@@ -47,10 +45,11 @@ public class QueuesJavaTest {
     }
 
     @Test
-    public void dequeueTest(){
+    void dequeueTest(){
         Queue<Car> cars = new ArrayDeque<>();
-        cars.offer(new Car(4567, "Skoda Rapid"));
-        assertEquals(4567, cars.peek().getLicensePlateNumber());
+        Car skoda = new Car(4567, "Skoda Rapid");
+        cars.offer(skoda);
+        assertThat(cars.peek()).isEqualTo(skoda);
         cars.offer(new Car(1234, "Mazda 3"));
         cars.offer(new Car(2345, "Kia Cerato"));
         
@@ -61,7 +60,7 @@ public class QueuesJavaTest {
     }
 
     @Test
-    public void getHeadTest(){
+    void getHeadTest(){
         Queue<Person> people = new ArrayDeque<>();
         people.offer(new Person("Alejandra", "Morales"));
         people.offer(new Person("Beatriz", "Sanchez"));
