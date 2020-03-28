@@ -1,23 +1,13 @@
-# Code for Vavr data structures series
+This repository contains consolidated code base for series of posts on Java, Vavr and AssertJ. 
 
-This repository contains code snippets for "Java vs. Vavr data structures" series. Here is the list of articles:
+## Posts
 
-* [Arrays](https://www.mednikov.net/java-arrays-vs-vavr-array/)
-* [Queues](https://www.mednikov.net/queues-in-java-and-vavr/)
-* [Sets](https://www.mednikov.net/sets-in-java-and-vavr/)
-* [Maps](https://www.mednikov.net/maps-java-vs-vavr/)
-* Lists
+* [Guide to Streams in Java (including after 8)](https://mednikov.net/guide-to-streams-in-java-including-after-8/)
 
-For more information, please refer to mentioned posts.
+## Copyrights
 
-## License
-
-2019, MIT License
+2019 - 2020 Under MIT license
 
 ## Author
 
-__Iurii Mednikov (Yuri Mednikov)__, Prague, Czech Republic
-
-email: yuri.mednikov@mednikov.net
-
-twitter: https://www.twitter.com/andreevi_ch
+Yuri Mednikov. Follow me on twitter [@andreevi_ch](https://twitter.com/andreevi_ch)
