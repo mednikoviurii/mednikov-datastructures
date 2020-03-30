@@ -6,6 +6,9 @@ import java.util.Iterator;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
+
+import com.google.common.collect.Sets;
 
 import org.junit.jupiter.api.Test;
 
@@ -57,5 +60,37 @@ class SetsJavaTest {
 
         Optional<Person> person = people.stream().filter(p -> p.equals(new Person("Maria", "Sanchez"))).findFirst();
         assertThat(person).isPresent();
+    }
+
+    @Test
+    void getSizeTest(){
+        Set<Integer> numbers = new HashSet<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+
+        int size = numbers.size();
+        assertThat(size).isEqualTo(5);
+    }
+
+    @Test
+    void createSubsetTest(){
+        // use Guava to create hash set
+        Set<Integer> numbers = Sets.newHashSet(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        // approach 1: streams
+        Set<Integer> streamSubset = numbers.stream().limit(5).collect(Collectors.toSet());
+        assertThat(streamSubset).hasSize(5).contains(1,2,3,4,5);
+
+        // approach 2: iterators
+        Iterator<Integer> iterator = numbers.iterator();
+        Set<Integer> iteratorSubset = new HashSet<>();
+        int limit = 5;
+        for (int i = 0; i<limit && iterator.hasNext(); i++){
+            iteratorSubset.add(iterator.next());
+        }
+        assertThat(iteratorSubset).hasSize(5).hasSameElementsAs(streamSubset);
     }
 }
