@@ -6,6 +6,7 @@ This repository contains consolidated code base for series of posts on Java, Vav
 * [What every developer should know about java.util.Collection](https://mednikov.net/java-util-collection/)
 * [Array based lists in Java](https://mednikov.net/array-based-lists-in-java/)
 * [Common AssertJ assertions for Java collections](https://mednikov.net/common-assertj-assertions-for-java-collections/)
+* [The ultimate guide to java.util.Optional class](https://mednikov.net/the-ultimate-guide-to-java-util-optional-class/)
 
 ## Copyrights
 
