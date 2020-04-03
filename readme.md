@@ -7,6 +7,7 @@ This repository contains consolidated code base for series of posts on Java, Vav
 * [Array based lists in Java](https://mednikov.net/array-based-lists-in-java/)
 * [Common AssertJ assertions for Java collections](https://mednikov.net/common-assertj-assertions-for-java-collections/)
 * [The ultimate guide to java.util.Optional class](https://mednikov.net/the-ultimate-guide-to-java-util-optional-class/)
+* [Queues data structure in Java](https://mednikov.net/queues-data-structure-in-java/)
 
 ## Copyrights
 
