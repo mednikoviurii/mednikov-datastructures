@@ -3,16 +3,18 @@ plugins {
     id 'application'
 }
 
+sourceCompatibility = '11'
+
 repositories {
     jcenter()
 }
 
 dependencies {
     implementation 'com.google.guava:guava:28.0-jre'
+    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'io.vavr:vavr:1.0.0-alpha-3'
     testImplementation 'org.assertj:assertj-core-java8:1.0.0m1'
     testImplementation 'org.assertj:assertj-vavr:0.2.0'
-    // testImplementation 'junit:junit:4.12'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
 }
